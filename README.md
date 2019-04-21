@@ -1,13 +1,16 @@
 # odoogeek
-<<<<<<< HEAD
 
 #### 介绍
-{**以下是码云平台说明，您可以替换此简介**
-码云是开源中国推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+{**odoo基础教程odoo crash cource**
+Odoo是一个用python语言开发的快速商业应用框架.官方网站 [https://odoo.com](https://odoo.com)}
+类似于python下著名的web框架django, odoo简化了构建商业应用的过程, 帮助开发者快速调整业务逻辑,数据库和页面样式以适应商业环境的多变需求.
 
 #### 软件架构
-软件架构说明
+MVC,MTV,DLP
+MVC: 模型层, 视图层, 控制层
+MTV: 模型层, 模版层, 视图层
+DLP: 数据层, 逻辑层, 展示层
+
 
 
 #### 安装教程
@@ -30,14 +33,12 @@
 4. 新建 Pull Request
 
 
-#### 码云特技
+#### odoo特技
 
 1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
+2. 官方博客 [blog.gitee.com](https://blog.gitee.com)
 3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+4. [GVP](https://gitee.com/gvp) 全称是最有价值开源项目，是综合评定出的优秀开源项目
+5. 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
+6. 封面人物是一档用来展示会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
 =======
-odoo crash cource
->>>>>>> ccca0b86a0ba5c178da59e9e8bd5cb3794f0dd28
