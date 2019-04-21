@@ -1,0 +1,2 @@
+# odoogeek
+odoo crash cource
