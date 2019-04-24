@@ -182,10 +182,11 @@ act_window：当record用不了的时候用它
 
 #### 继承XML的命名
 继承视图的命名规则：<base_view>_inherit_<current_module_name>,其中_inherit_<current_module_name>是扩展视图的模块的技术名称。
+```
 <record id="inherited_model_view_form_inherit_my_module" model="ir.ui.view">
     ...
 </record>
-
+```
 
 
 ### Python
@@ -208,6 +209,7 @@ import 顺序
 导入odoo的模块
 
 在每组中的导入按字母顺序排序
+
 ```
 # 1 : 导入python库
 import base64
@@ -237,13 +239,18 @@ from odoo.addons.web.controllers.main import login_redirect
 
 #### 让你的方法可以批量处理
 当添加一个函数时，确保它可以处理多重数据，如通过api.multi()装饰器，可以在self上进行循环处理
+```
 @api.multi
 def my_method(self)
     for record in self:
         record.do_cool_stuff()
 
+```
+
 避免使用api.one装饰器，因为它可能不会像你想象中一样工作。
 为了更好的性能，比如当定义一个状态按钮时，不在api.multi循环里用search和search_count方法，而用read_group一次计算
+
+```
 @api.multi
 def _compute_equipment_count(self):
 """ Count the number of equipement per category """
@@ -251,35 +258,44 @@ def _compute_equipment_count(self):
     mapped_data = dict([(m['category_id'][0], m['category_id_count']) for m in equipment_data])
     for category in self:
         category.equipment_count = mapped_data.get(category.id, 0)
+```
 
 #### 上下文环境
 在新API中，context变量是不能修改的。可以通过with_context来使用新的运行环境调用方法。
+
+```
+
+
 records.with_context(new_context).do_stuff() # all the context is replaced
 records.with_context(**additionnal_context).do_other_stuff() # additionnal_context values override native context ones
+```
 
 #### 尽量使用ORM
 当ORM可以实现的时候尽量使用ORM而不要直接写sql，因为它可能会绕过orm的一些规则如权限、事务等，还会让代码变得难读且不安全。
+
 ```
-\# 错误的写法，注入风险，代码效率低
+# 错误的写法，注入风险，代码效率低
 self.env.cr.execute('SELECT id FROM auction_lots WHERE auction_id in (' + ','.join(map(str, ids))+') AND state=%s AND obj_price > 0', ('draft',))
 auction_lots_ids = [x[0] for x in self.env.cr.fetchall()]
 
-\# 不会被注入，但仍然是错误的写法
+# 不会被注入，但仍然是错误的写法
 self.env.cr.execute('SELECT id FROM auction_lots WHERE auction_id in %s '\
            'AND state=%s AND obj_price > 0', (tuple(ids), 'draft',))
 auction_lots_ids = [x[0] for x in self.env.cr.fetchall()]
 
-\# 推荐的写法
+# 推荐的写法
 auction_lots_ids = self.search([('auction_id','in',ids), ('state','=','draft'), ('obj_price','>',0)])
 ```
+
+
 #### 防止注入
 不要用python的+号连接符、%解释符来拼sql
 ```
-\# 错误的写法
+# 错误的写法
 self.env.cr.execute('SELECT distinct child_id FROM account_account_consol_rel ' +
            'WHERE parent_id IN ('+','.join(map(str, ids))+')')
 
-\# 推荐的写法
+# 推荐的写法
 self.env.cr.execute('SELECT DISTINCT child_id '\
            'FROM account_account_consol_rel '\
            'WHERE parent_id IN %s',
@@ -291,30 +307,33 @@ odoo有自己的一套机制用于事务处理
 
 #### 正确的使用翻译方法
 odoo用一个下划线方法来表明某字段需要翻译，该方法通过from odoo.tools.translate import _导入。一般情况下该方法只能被用在代码里的规定字符串的翻译，不能用于动态字符串的翻译，翻译方法的调用只能是_('literal string')，里面不能加其他的。
+
 ```
-\# 好的方式，简洁
+# 好的方式，简洁
 error = _('This record is locked!')
 
-\# 好的方式，包含格式的字符串
+# 好的方式，包含格式的字符串
 error = _('Record %s cannot be modified!') % record
 
-\# 好的方式，多行文字的字符串
+# 好的方式，多行文字的字符串
 error = _("""This is a bad multiline example
              about record %s!""") % record
 error = _('Record %s cannot be modified' \
           'after being validated!') % record
 
-\# 错误的方式：试图在字符串格式化后进行翻译
-\# 这样没有作用，而只会把翻译搞乱
+# 错误的方式：试图在字符串格式化后进行翻译
+# 这样没有作用，而只会把翻译搞乱
 error = _('Record %s cannot be modified!' % record)
 
-\# 错误：动态字符串，不能这样翻译
+# 错误：动态字符串，不能这样翻译
 error = _("'" + que_rec['question'] + "' \n")
 
-\# 错误：字段值将会被系统字段翻译，而不会获取预期结果
+# 错误：字段值将会被系统字段翻译，而不会获取预期结果
 error = _("Product %s is out of stock!") % _(product.name)
-\# 错误的方式：试图在字符串格式化后进行翻译
+# 错误的方式：试图在字符串格式化后进行翻译
 error = _("Product %s is out of stock!" % product.name)
+```
+
 
 ### 符号和命名
 
@@ -329,11 +348,13 @@ error = _("Product %s is out of stock!" % product.name)
 
 ##### python类-使用驼峰命名方式
 
+```
 class AccountInvoice(models.Model):
     ...
 
 class account_invoice(osv.osv):
     ...
+```
 
 
 ##### 变量名
@@ -342,11 +363,12 @@ class account_invoice(osv.osv):
 普通变量用下划线+小写字母
 由于新api中记录是集合形式，当变量不包含id时不以id作后缀
 
-
-
+```
 ResPartner = self.env['res.partner']
 partners = ResPartner.browse(ids)
 partner_id = partners[0].id
+```
+
 
 One2Many， Many2Many字段一般以ids作为后缀如：sale_order_line_ids
 Many2One 一般以_id为后缀如：partner_id, user_id
@@ -437,9 +459,11 @@ class Event(models.Model):
 类名使用驼峰命名
 如果javascript代码需要全局运行，在website模块中声明一个if_dom_contains 方法
 
+```
 odoo.website.if_dom_contains('.jquery_class_selector', function () {
     /*your code here*/
 });
+```
 
 
 将所有的class命名为o_<module_name>,如o_forum
