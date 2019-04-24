@@ -86,7 +86,7 @@ addons/<module_name>/
     |-- <main_transient_B>.py
     `-- <main_transient_B>_views.xml
 ```
-```
+
 
 ### XML文件
 #### 格式
