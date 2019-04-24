@@ -1,49 +1,95 @@
 # odoogeek
 
-#### 介绍
 {**odoo基础教程odoo crash cource**
 
-Odoo是一个用python语言开发的快速商业应用框架.  
+Odoo是python语言开发的商业应用框架.  
 官方网站 [https://odoo.com](https://odoo.com)}  
-类似于python下著名的web框架django, odoo通过模块的复用和解耦简化了构建商业应用的过程,   帮助开发者快速调整业务逻辑,数据库和页面样式以适应商业环境的多变需求.  
+类似于python下的web框架django, odoo通过模块的复用和解耦简化了构建商业应用的过程,   帮助开发者快速调整业务逻辑,数据库和页面样式以适应商业环境的多变需求.  
 
-odoo官方及其开源社区提供了大量的基础应用模块以适应不同的商业需求,例如，企业基本的进销存、采购、销售、MRP生产制造、品保质量保障、企业招聘、员工合同、休假、午餐管理、内部论坛、车队管理、内部聊天IM沟通、客诉追溯管理、CRM客户关系管理、VOIP、E-Shop电子商务、网店、企业官方网站，财务会计、银行对账、资产管理、HR工资管理、预算管理、WMS仓库库存管理、POS街边小摊、社区商店、项目管理、条码、PLM等等等
+odoo官方及其开源社区提供了大量的基础应用模块以适应不同的商业需求,例如，企业基本的进销存, 财务, CRM, MRP, SCM, 网站, 电商平台等
  
-#### 软件架构
-MVC,MTV,DLP
-
-MVC: 模型层, 视图层, 控制层  
-MTV: 模型层, 模版层, 视图层  
-DLP: 数据层, 逻辑层, 展示层  
-
-
-
-#### 安装教程
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 使用说明
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 参与贡献
-
-1. Fork 本仓库
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
+# 目录 
+### Part1 开发   
+  odoo 概览 
+    简介    
+    目标读者    
+    内容概要    
 
 
-#### odoo特技
+     
+  开发环境与规范    
+    安装    
+    IDE配置 
+    开发规范    
 
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是最有价值开源项目，是综合评定出的优秀开源项目
-5. 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. 封面人物是一档用来展示会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
-=======
+  MVC 架构      
+
+  Module 模块  
+
+  继承并扩展现有模块   
+
+  models模型   
+
+  views视图和模版templet
+
+  wizard 向导及视图    
+
+  数据库与ORM  
+
+  Debug与测试  
+    缺点和不足
+    bug
+    测试
+
+  可视化与报表    
+
+  CMS快速构建网站 
+
+  工作流
+
+  构建中台API集成外部系统
+
+  部署迁移和升级
+
+  国际化与本地化
+
+  财务管理
+
+
+### Part2 实施
+
+  敏捷实施
+
+  初始化与系统设置
+
+  用户和权限
+
+  业务数据规范
+
+  即时沟通与邮箱配置
+
+  进销存
+
+  管理财务
+
+  CRM
+
+  WMS
+
+  MRP
+
+  SCM
+
+  CMS
+
+  可视化开发
+
+  第三方模块
+
+  寻求支持与帮助文档
+
+
+### Part3 项目实践与行业方案
+
+
+
